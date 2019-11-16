@@ -1,5 +1,4 @@
-# cine-abc
-Cine ABC - Projeto Integrador
+# Cine ABC - Projeto Integrador
 
 ## SITUAÇÃO DE APRENDIZAGEM
 
