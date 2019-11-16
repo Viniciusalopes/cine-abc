@@ -2,11 +2,10 @@
 
 ## SITUAÇÃO DE APRENDIZAGEM
 
-### ESTRATÉGIAS DE APRENDIZAGEM DESAFIADORAS:
+### ESTRATÉGIA DE APRENDIZAGEM DESAFIADORA:
 
-( ) Estudo de caso ( X ) Projeto (elaboração ou execução)
+- Projeto (elaboração ou execução)
 
-( ) Situação-Problema ou ( ) Pesquisa Aplicada
 
 ### DESCRIÇÃO DA ESTRATÉGIA DE APRENDIZAGEM DESAFIADORA
 
