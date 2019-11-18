@@ -38,6 +38,20 @@ public class Dao {
         u.setUsuario_email("suporte@viniciusalopes.com.br");
         u.setUsuario_senha("A665A45920422F9D417E4867EFDC4FB8A04A1F3FFF1FA07E998E86F7F7A27AE3");
         usuarios.add(u);
+
+        u = new Usuario();
+        u.setUsuario_id(1);
+        u.setUsuario_nome("Daniel");
+        u.setUsuario_email("suporte@viniciusalopes.com.br");
+        u.setUsuario_senha("A665A45920422F9D417E4867EFDC4FB8A04A1F3FFF1FA07E998E86F7F7A27AE3");
+        usuarios.add(u);
+
+        for (int i = 0; i < usuarios.size(); i++) {
+            Usuario us = new Usuario();
+            us = usuarios.get(i);
+
+            System.out.println(us.getUsuario_nome() + " - " + us.getUsuario_email());
+        }
     }
 
     /**
