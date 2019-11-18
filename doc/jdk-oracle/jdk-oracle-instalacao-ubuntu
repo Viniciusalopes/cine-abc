@@ -1,0 +1,19 @@
+FONTE: https://www.javahelps.com/2015/03/install-oracle-jdk-in-ubuntu.html
+
+Comandos no terminal:
+sudo mkdir /usr/lib/jvm
+cd /usr/lib/jvm
+sudo tar -xvzf ~/Downloads/jdk-8u231-linux-x64.tar.gz
+sudo gedit /etc/environment
+sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk1.8.0_231/bin/java" 0
+sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk1.8.0_231/bin/javac" 0
+sudo update-alternatives --set java /usr/lib/jvm/jdk1.8.0_231/bin/java
+sudo update-alternatives --set javac /usr/lib/jvm/jdk1.8.0_231/bin/javac
+update-alternatives --list java
+update-alternatives --list javac
+java -version
+
+nano ~/netbeans-8.2/etc/netbeans.conf
+    setar netbeans_jdkhome
+    #netbeans_jdkhome="/lib/jvm/java-8-openjdk-amd64"
+    netbeans_jdkhome="/usr/lib/jvm/jdk1.8.0_231"

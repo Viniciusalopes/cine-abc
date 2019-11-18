@@ -27,12 +27,24 @@ public class frmLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
         btnLogin = new javax.swing.JButton();
         btnCancelar1 = new javax.swing.JButton();
         lbSenha = new javax.swing.JLabel();
         lbUsuario = new javax.swing.JLabel();
         tbUsuario = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cine ABC - Login");
@@ -102,17 +114,16 @@ public class frmLogin extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
         );
 
-        btnLogin.getAccessibleContext().setAccessibleName("Login");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        
+        System.out.println("Login");
+        jDialog1.setVisible(true);
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
-        // TODO add your handling code here:
+        System.out.println("Cancelar");
     }//GEN-LAST:event_btnCancelar1ActionPerformed
 
     /**
@@ -153,6 +164,7 @@ public class frmLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar1;
     private javax.swing.JButton btnLogin;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel lbSenha;
     private javax.swing.JLabel lbUsuario;

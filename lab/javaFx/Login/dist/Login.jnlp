@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Login.jar" size="8358" download="eager" />
+    <jar href="Login.jar" size="8532" download="eager" />
   </resources>
   <application-desc main-class="app.Principal"  name="Login" >
   </application-desc>
