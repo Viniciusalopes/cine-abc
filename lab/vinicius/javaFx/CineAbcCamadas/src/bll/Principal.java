@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 public class Principal extends Application {
 
     // Instância de dados do sistema
-    private static Dao dao = new Dao();
+    public static Dao dao = new Dao();
     
     @Override
     public void start(Stage primaryStage) throws NoSuchAlgorithmException, UnsupportedEncodingException {
