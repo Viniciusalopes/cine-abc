@@ -1,0 +1,4 @@
+.gitignore
+/lab/marcos/SimulaBanco/build/
+lab/marcos/SimulaBanco/build.xml
+lab/marcos/SimulaBanco/nbproject/
