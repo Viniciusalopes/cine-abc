@@ -47,5 +47,6 @@ manipulação nas outras camadas.
 Camada responsável por métodos que sejam úteis ao funcionamento das outras camadas e que 
 não se enquadrem nas características de nenhuma delas.
 
+---
 
 FONTE: https://www.devmedia.com.br/visao-geral-do-desenvolvimento-em-camadas-trabalhando-com-desenvolvimento-em-camadas-utilizando-csharp/21645
