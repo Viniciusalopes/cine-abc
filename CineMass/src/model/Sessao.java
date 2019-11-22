@@ -10,5 +10,6 @@ package model;
  * @author vovostudio
  */
 public class Sessao {
-    
+    int id;
+    String periodo;
 }
