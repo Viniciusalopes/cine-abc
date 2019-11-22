@@ -18,14 +18,14 @@
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="146.0" width="242.0" x="-5.0" y="-53.0"/>
+          <y:Geometry height="146.0" width="260.56000000000006" x="-5.0" y="-53.0"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="35.36376953125" x="103.318115234375" xml:space="preserve" y="25.96875">Sala<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
-          <y:UML clipContent="true" constraint="String nome, List&lt;Sessao&gt; sessoes" hasDetailsColor="false" omitDetails="false" stereotype="Lugar" use3DEffect="true">
-            <y:AttributeLabel xml:space="preserve">- String nome
-- List&lt;Sessao&gt; sessoes</y:AttributeLabel>
-            <y:MethodLabel xml:space="preserve">+ String getNome()
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="35.36376953125" x="112.59811523437503" xml:space="preserve" y="25.96875">Sala<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:UML clipContent="true" constraint="String nomeSala, List&lt;String&gt; sessoes" hasDetailsColor="false" omitDetails="false" stereotype="Lugar" use3DEffect="true">
+            <y:AttributeLabel xml:space="preserve">- String nomeSala
+- List&lt;String&gt; sessoes</y:AttributeLabel>
+            <y:MethodLabel xml:space="preserve">+ String getnomeSala()
 + List&lt;Sessao&gt; getSessoes()</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
