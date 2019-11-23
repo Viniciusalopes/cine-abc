@@ -12,6 +12,7 @@ package model;
 public class Filme {
 
     private int id;
+    private String titulo;
 
     public int getId() {
         return id;
@@ -20,6 +21,5 @@ public class Filme {
     public String getTitulo() {
         return titulo;
     }
-    private String titulo;
 
 }
