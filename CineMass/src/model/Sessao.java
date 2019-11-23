@@ -10,6 +10,7 @@ package model;
  * @author vovostudio
  */
 public class Sessao {
+
     private String periodo;
     private Poltrona[][] poltrona = new Poltrona[10][10];
     private Filme filme = new Filme();
@@ -31,5 +32,5 @@ public class Sessao {
     public Filme getFilme() {
         return filme;
     }
-    
+
 }
