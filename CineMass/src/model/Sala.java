@@ -5,10 +5,28 @@
  */
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author vovostudio
  */
 public class Sala {
-    
+
+    private int id;
+    private String nome;
+    private List<Sessao> sessoes = new ArrayList<Sessao>();
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public List<Sessao> getSessoes() {
+        return sessoes;
+    }
 }
