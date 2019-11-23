@@ -11,9 +11,10 @@ package model;
  */
 public class Poltrona {
 
-    int id;
-    char fileira;
-    int numero;
+    private int id;
+    private char fileira;
+    private int numero;
+    private int ingresso_ID;
 
     public int getId() {
         return id;
