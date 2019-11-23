@@ -11,26 +11,4 @@ package model;
  */
 public class Sessao {
 
-    private String periodo;
-    private Poltrona[][] poltrona = new Poltrona[10][10];
-    private Filme filme = new Filme();
-
-    private int id;
-
-    public int getId() {
-        return id;
-    }
-
-    public String getPeriodo() {
-        return periodo;
-    }
-
-    public Poltrona[][] getPoltrona() {
-        return poltrona;
-    }
-
-    public Filme getFilme() {
-        return filme;
-    }
-
 }

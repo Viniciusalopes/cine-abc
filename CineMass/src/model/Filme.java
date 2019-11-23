@@ -10,5 +10,16 @@ package model;
  * @author vovostudio
  */
 public class Filme {
-    
+
+    private int id;
+    private String titulo;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
 }
