@@ -10,5 +10,21 @@ package model;
  * @author vovostudio
  */
 public class Poltrona {
-    
+
+    int id;
+    char fileira;
+    int numero;
+
+    public int getId() {
+        return id;
+    }
+
+    public char getFileira() {
+        return fileira;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
 }
