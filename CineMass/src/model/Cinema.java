@@ -5,10 +5,28 @@
  */
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author vovostudio
  */
 public class Cinema {
-    
+
+    private int id;
+    private String nome;
+    private List<Sala> salas = new ArrayList<Sala>();
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public List<Sala> getSalas() {
+        return salas;
+    }
 }
