@@ -20,6 +20,10 @@ public class Poltrona {
         return id;
     }
 
+    public int getIngresso_ID() {
+        return ingresso_ID;
+    }
+
     public char getFileira() {
         return fileira;
     }
