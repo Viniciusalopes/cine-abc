@@ -14,14 +14,16 @@ public class Poltrona {
     private int id;
     private char fileira;
     private int numero;
-    private int ingresso_ID;
+
+    public Poltrona(int id, char fileira, int num) {
+        this.id = id;
+        this.fileira = fileira;
+        this.numero = num;
+
+    }
 
     public int getId() {
         return id;
-    }
-
-    public int getIngresso_ID() {
-        return ingresso_ID;
     }
 
     public char getFileira() {
