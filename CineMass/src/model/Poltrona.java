@@ -15,10 +15,10 @@ public class Poltrona {
     private char fileira;
     private int numero;
 
-    public Poltrona(int id, char fileira, int num) {
+    public Poltrona(int id, char fileira, int numero) {
         this.id = id;
         this.fileira = fileira;
-        this.numero = num;
+        this.numero = numero;
 
     }
 
