@@ -35,4 +35,8 @@ public class Cinema {
     public List<Sala> getSalas() {
         return salas;
     }
+    
+    public void setSalas(List<Sala> salas){
+        this.salas = salas;
+    }
 }
