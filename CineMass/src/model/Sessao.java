@@ -11,11 +11,17 @@ package model;
  */
 public class Sessao {
 
-    private String periodo;
-    private Poltrona[][] poltrona = new Poltrona[10][10];
-    private Filme filme = new Filme();
-
     private int id;
+    private String periodo;
+    private Poltrona[][] poltronas;
+    private Filme filme;
+
+    public Sessao(int id, String periodo, Poltrona[][] poltronas, Filme filme) {
+        this.id = id;
+        this.periodo = periodo;
+        this.poltronas = poltronas;
+        this.filme = filme;
+    }
 
     public int getId() {
         return id;
@@ -25,8 +31,8 @@ public class Sessao {
         return periodo;
     }
 
-    public Poltrona[][] getPoltrona() {
-        return poltrona;
+    public Poltrona[][] getPoltronas() {
+        return poltronas;
     }
 
     public Filme getFilme() {
