@@ -10,5 +10,28 @@ package model;
  * @author vovostudio
  */
 public class Poltrona {
-    
+
+    private int id;
+    private char fileira;
+    private int numero;
+
+    public Poltrona(int id, char fileira, int numero) {
+        this.id = id;
+        this.fileira = fileira;
+        this.numero = numero;
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public char getFileira() {
+        return fileira;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
 }
