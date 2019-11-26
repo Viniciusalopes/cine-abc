@@ -1,0 +1,85 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package app;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author marcos
+ */
+public class APP {
+
+    static String lblMenuRegistrarVenda;
+    static String lblMenuRelatorio;
+    static String lblMenuReimprimir;
+
+    public void imprime(String texto) {
+        System.out.printf(texto);
+    }
+
+    public static void lblListaFilmes(Object[] dados) {
+        ArrayList<Integer> ids = (ArrayList<Integer>) dados[0];
+        ArrayList<String> titulos = (ArrayList<String>) dados[1];
+
+        System.out.printf("\nQual Filme deseja assistir?\n\n");
+
+        for (int i = 0; i < ids.size(); i++) {
+            System.out.printf(" %d.%s\n", ids.get(i), titulos.get(i));
+        }
+        System.out.printf("\n");
+        System.out.println(" 0.Sair\n> ");
+    }
+
+    public static String getLblMenuRegistrarVenda() {
+        lblMenuRegistrarVenda = "\nMenu Registrar venda de Ingresso\n";
+
+        return lblMenuRegistrarVenda;
+    }
+
+    public static String getLblMenuRelatorio() {
+        System.out.printf(
+                "Relatório\n");
+        return lblMenuRelatorio;
+    }
+
+    public static String getLblMenuReimprimir() {
+        System.out.printf(
+                "Reimprimir Ingresso\n");
+        return lblMenuReimprimir;
+    }
+
+    public static void lblPeriodo(Object[] dados) {
+        ArrayList<Integer> ids = (ArrayList<Integer>) dados[0];
+        ArrayList<String> titulos = (ArrayList<String>) dados[1];
+        System.out.printf("%d\n", ids.size());
+        System.out.printf("\nInforme a sessão.\n\n");
+        for (int i = 0; i < 3; i++) {
+            System.out.printf(" %d.%s\n", ids.get(i), titulos.get(i));
+        }
+        System.out.println("\n 0.Voltar\n> ");
+
+    }
+
+    public static void lblSalaPoltronas(Object[] dados) {
+
+        ArrayList<Integer> ids = (ArrayList<Integer>) dados[0];
+        ArrayList<Character> letras = (ArrayList<Character>) dados[1];
+        ArrayList<Integer> numero = (ArrayList<Integer>) dados[2];
+        int cont = 0;
+        System.out.printf("\nDigite uma letra para escolher a fileira.\n\n");
+        for (int i = 0; i < 10; i++) {
+            System.out.printf(" %s ", letras.get(i));
+            for (int j = 0; j < 10; j++) {
+                System.out.printf(" %02d ", numero.get(j));
+            }
+            System.out.printf("\n");
+        }
+        System.out.println("\n 0.Voltar\n> ");
+
+    }
+
+}
