@@ -106,7 +106,7 @@ public class APP {
         ArrayList<Integer> ids = (ArrayList<Integer>) dados[0];
         char[] letras = (char[]) dados[1];
         ArrayList<Integer> numeros = (ArrayList<Integer>) dados[2];
-        ArrayList<Integer> entradasIdPolrona = (ArrayList<Integer>) dados[3];
+        ArrayList<Integer> entradasIdPoltrona = (ArrayList<Integer>) dados[3];
         int id_filme = (int) dados[4];
         String pos;
         System.out.printf("\n");

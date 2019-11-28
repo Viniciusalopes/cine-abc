@@ -36,7 +36,7 @@ public class RegistrarVenda {
             return 0;
         } else {
             id_filme = LoopFilme(id_sessao);
-            if (id_sessao == 0) {
+            if (id_filme == 0) {
                 return 0;
             } else {
                 switch (id_sessao) {
