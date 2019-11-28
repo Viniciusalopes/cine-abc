@@ -22,274 +22,175 @@ public class RegistrarVenda {
     public int MenuRegistrarVenda(Bll bll, APP app) {
         this.bll = bll;
         this.app = app;
-        System.out.printf("%s", app.getLblMenuRegistrarVenda());
-        int id_filme;
-        int id_sessao = 0;
-        int id_sala;
-        int id_entrada = bll.getEntradaId();
-        int id_poltrona;
-        double preco = 12.5;
-        boolean tipoEntrada;
-        int validaNumeroEntrada;
-        id_sessao = LoopSessao();
-        
-      for(Cinema c : bll.)
-            
-        }
-        if (id_sessao == 0) {
-            return 0;
-        } else {
-            id_filme = LoopFilme(id_sessao);
-            if (id_filme == 0) {
-                return 0;
+        int id_filme = -1;
+        int id_sessao = -1;
+        int id_sala = -1;
+        int id_entrada = -1;
+        int id_poltrona = -1;
+        int opcao = -1;
+        boolean meiaEntrada;
+        double preco;
+        boolean concluido = false;
+        do {
+
+            app.imprime(String.format("%s", app.getLblMenuRegistrarVenda()));
+
+            if (id_filme < 0) {
+                id_filme = LoopFilme();
             } else {
-                switch (id_sessao) {
-                    case 1:
-                        break;
-                    case 2:
-                        switch (id_filme) {
-                            case 1:
-                                id_filme = 4;
-                                break;
-                            case 2:
-                                id_filme = 5;
-                                break;
-                            case 3:
-                                id_filme = 6;
-                                break;
-                            default:
-                                throw new AssertionError();
-                        }
-                        break;
-                    case 3:
-                        switch (id_filme) {
-                            case 1:
-                                id_filme = 7;
-                                break;
-                            case 2:
-
-                                id_filme = 8;
-                                break;
-                            case 3:
-                                id_filme = 9;
-                                break;
-                            default:
-                                throw new AssertionError();
-                        }
-                        break;
-                    default:
-                        throw new AssertionError();
-                }
-                id_poltrona = loopSala(id_filme, id_sessao);
-                if (id_poltrona == 0) {
-                    return 0;
+                if (id_filme == 0) {
+                    return -1;
                 } else {
+                    if (id_sessao < 0) {
+                        id_sessao = LoopSessao();
+                        if (id_sessao == 0) {
+                            // Volta para a selecao de filme
+                            id_filme = id_sessao = -1;
+                        } else {
+                            // Continua...
+                            id_sala = bll.getSalaId(id_filme, id_sessao);
+                            if (id_poltrona < 0) {
+                                id_poltrona = LoopSala(id_filme, id_sessao, id_sala);
 
-                    validaNumeroEntrada = loopEntrada();
-                    if (validaNumeroEntrada == 0) {
-                        return 0;
-                    } else if (validaNumeroEntrada == 1) {
-                        tipoEntrada = true;
-
-                    } else {
-                        tipoEntrada = false;
-                        preco = preco * 2;
+                                if (id_poltrona == 0) {
+                                    // Volta para a seleção de sessão
+                                    id_sessao = id_poltrona = -1;
+                                } else {
+                                    // Continua...
+                                    if (opcao < 0) {
+                                        opcao = LoopEntrada();
+                                    }
+                                    if (opcao == 0) {
+                                        // Volta para a seleção da poltrona
+                                        id_poltrona = opcao = -1;
+                                    } else {
+                                        // Processamento
+                                        meiaEntrada = (opcao == 1) ? true : false;
+                                        preco = (meiaEntrada) ? 12.5 : 25.0;
+                                        // Hadúúúúúúúúúúúúúúúúúúúúken >>>>>>>>>>>>>>>>>>>>>                            
+                                        // Inclui a entrada
+                                        Entrada entrada = new Entrada(id_entrada, id_filme, id_sala, id_sessao, id_poltrona, meiaEntrada, preco);
+                                        this.bll.incluirEntrada(entrada);
+                                        concluido = true;
+                                    }
+                                }
+                            }
+                        }
                     }
-
-                    id_sala = bll.getSalaId(id_filme, id_sessao);
-
-                    Entrada e = new Entrada(id_entrada, id_filme, id_sala, id_sessao, id_poltrona, tipoEntrada, preco);
-                    bll.incrementaEntrada();
-                    bll.incluirEntrada(e);
-                    app.canhotoIngresso(e);
                 }
             }
-        }
+        } while (!concluido);
+        return -1;
+    }
+
+    public int LoopFilme() {
+        Scanner input = new Scanner(System.in);
+        String opcao;
+
+        do {
+            app.lblListaFilmes();
+            if (!ValidaInput.int_no_intervalo(opcao = input.nextLine(), 0, 3)) {
+                app.imprime("\nOpcao Inválida!\n\n");
+                opcao = "-1";
+            } else {
+                return Integer.parseInt(opcao);
+            }
+        } while (Integer.parseInt(opcao) != 0);
 
         return 0;
     }
 
     public int LoopSessao() {
         Scanner input = new Scanner(System.in);
-        int opcao = 0;
-        boolean sair = false;
-        boolean valida = false;
-        String str = null;
-        int cont = 0;
+        String opcao;
+
         do {
-            do {
-                app.lblPeriodo(bll.getPeriodos());
-                str = input.next();
-                if (ValidaInput.int_no_intervalo(str, 0, 3) == false) {
-                    System.out.print("\nOpção inválida!\n");
-                } else {
-                    if (Integer.parseInt(str) == 0) {
-                        valida = true;
-                        cont++;
-                        return 0;
-                    } else {
-                        valida = true;
-                        opcao = Integer.parseInt(str);
-                        cont++;
-                        return opcao;
-                    }
+            app.lblPeriodo();
+            if (!ValidaInput.int_no_intervalo(opcao = input.nextLine(), 0, 3)) {
+                app.imprime("\nOpcao Inválida!\n\n");
+                opcao = "-1";
+            } else {
+                return Integer.parseInt(opcao);
+            }
 
-                }
-            } while (!valida);
+        } while (Integer.parseInt(opcao) != 0);
 
-            sair = true;
-        } while (!sair);
-
-        return opcao;
+        return 0;
     }
 
-    public int LoopFilme(int id_sessao) {
+    public int LoopSala(int id_filme, int id_sessao, int id_sala) {
         Scanner input = new Scanner(System.in);
-        int opcao = 0;
-        boolean sair = false;
-        boolean valida = false;
-        String str = null;
-        int cont = 0;
-        do {
-            do {
-                app.lblListaFilmes(bll.getListaDeFilmes(id_sessao));
-                str = input.next();
 
-                if (ValidaInput.int_no_intervalo(str, 0, 3) == false) {
-                    app.imprime("\nOpção inválida!\n");
-                } else {
-                    if (Integer.parseInt(str) == 0) {
-                        valida = true;
-                        cont++;
-                        return 0;
-                    } else {
-
-                        valida = true;
-                        opcao = Integer.parseInt(str);
-                        cont++;
-                        return opcao;
-                    }
-
-                }
-            } while (!valida);
-            sair = true;
-        } while (!sair);
-
-        return opcao;
-    }
-
-    public int loopSala(int id_filme, int id_sessao) {
-        Scanner input = new Scanner(System.in);
-        int opcao = 0;
-        boolean sair = false;
-        boolean valida;
-        char fileira;
-        int numero;
-        int cont = 0;
-        int id_poltrona = 0;
-        char cr[] = new char[10];
-        String str = null;
-
-        char aux = 'A';
-        for (int i = 0; i < 10; i++) {
-            cr[i] = aux;
-            aux++;
+        char letras[] = bll.getLetras();
+        char opcoes[] = new char[letras.length + 1];
+        opcoes[0] = '0';
+        for (int i = 0; i < letras.length; i++) {
+            opcoes[i + 1] = letras[i];
         }
 
+        String opcao;
+        char fileira;
+        int numero;
+        int id_poltrona;
+        boolean valida;
+
         do {
 
-            valida = false;
             do {
-                app.lblSalaPoltronas(bll.getPoltrona( bll,id_filme, id_sessao));
-                ValidaInput.char_opcao_valida(str = input.next(), cr, true);
-                if (ValidaInput.char_opcao_valida(str, cr, valida) == false) {
-                    str = "";
-                    app.imprime("\nOpção inválida!\n");
+                app.imprime("\n");
+                app.lblSalaPoltronas(id_filme, id_sessao, id_sala);
+                app.imprime("\n Digite a letra da fileira.");
+                app.imprime("\n\n 0. Voltar\n\n> ");
+
+                valida = ValidaInput.char_opcao_valida(opcao = input.nextLine(), opcoes, false);
+
+                if (!valida) {
+                    app.imprime("\nLetra inválida!\n");
+                    app.imprime("Eitalala...  (-.-)\n");
                 } else {
-                    valida = true;
-                }
-            } while (!valida);
-            valida = false;
-            fileira = str.charAt(0);
-            fileira = Character.toUpperCase(fileira);
-            do {
-                System.out.printf("\n");
-                app.imprime("Digite o número da Poltrona.\n\n> ");
-                input.nextLine();
-                str = input.next();
-                if (ValidaInput.int_no_intervalo(str, 1, 10) == false) {
-                    app.imprime("Opção inválida!\n");
-                } else {
-                    if (Integer.parseInt(str) == 0) {
-                        valida = true;
-                        cont++;
+                    if (opcao.charAt(0) == '0') {
                         return 0;
-                    } else {
-                        opcao = Integer.parseInt(str);
-                        cont++;
-                        numero = Integer.parseInt(str);
-                        id_poltrona = bll.getPoltronaId(fileira, numero);
-                        valida = true;
                     }
                 }
             } while (!valida);
 
-            if (bll.getEntradaPoltronId(id_filme).isEmpty()) {
+            fileira = opcao.toUpperCase().charAt(0);
 
-                sair = true;
-            } else {
-                for (int i = 0; i < bll.getEntradaPoltronId(id_filme).size(); i++) {
-                    if (id_poltrona == bll.getEntradaPoltronId(id_filme).get(i)) {
-                        System.out.printf("%d - ", bll.getEntradaPoltronId(id_filme).get(i));
-                        app.imprime("\n<<<Esta poltrona está ocupada>>> \n");
-                        sair = false;
-                    } else {
-                        sair = true;
-                    }
+            do {
+                app.imprime("\nDigite o número da Poltrona > ");
+                valida = ValidaInput.int_no_intervalo(opcao = input.nextLine(), 1, 10);
+                if (!valida) {
+                    app.imprime("\nNúmero inválido!\n");
+                    app.imprime("Ai, ai, ai... (0.o)\n");
                 }
+            } while (!valida);
+            numero = Integer.parseInt(opcao);
+
+            id_poltrona = bll.getIdPoltrona(id_filme, id_sessao, id_sala, fileira, numero);
+
+            valida = bll.poltronaLivre(id_filme, id_sessao, id_sala, id_poltrona);
+
+            if (!valida) {
+                app.imprime("\n<<<Esta poltrona está ocupada>>> \n");
             }
-        } while (!sair);
-        System.out.printf("banana,%b\n", sair);
+        } while (!valida);
+
         return id_poltrona;
     }
 
-    public int loopEntrada() {
+    public int LoopEntrada() {
         Scanner input = new Scanner(System.in);
-        int opcao = 0;
-        boolean sair = false;
+        String opcao;
         boolean valida = false;
 
-        String str = null;
-        int cont = 0;
         do {
-            do {
-                app.lblEntrada(bll.getPeriodos());
-                str = input.next();
-                if (ValidaInput.int_no_intervalo(str, 0, 2) == false) {
-                    app.imprime("\nOpção inválida!\n\n");
-                } else {
-                    if (Integer.parseInt(str) == 0) {
-                        valida = true;
-                        cont++;
-                        return 0;
-                    } else {
-                        valida = true;
-                        opcao = Integer.parseInt(str);
-                        cont++;
-                        if (Integer.parseInt(str) == 1) {
+            app.lblEntrada();
+            valida = ValidaInput.int_no_intervalo(opcao = input.nextLine(), 0, 2);
+            if (!valida) {
+                app.imprime("\nOpção inválida!\n\n");
+            }
+        } while (!valida);
 
-                            return 1;
-                        } else {
-                            return 2;
-                        }
-                    }
-                }
-            } while (!valida);
-
-            sair = true;
-        } while (!sair);
-
-        return 0;
-
+        return Integer.parseInt(opcao);
     }
 }

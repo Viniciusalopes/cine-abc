@@ -14,12 +14,11 @@ import java.util.List;
  */
 public class Cinema {
 
-
     private int id;
     private String Nome;
-    private List<Sala> salas;
+    private ArrayList<Sala> salas;
 
-    public Cinema(int id, String Nome, List<Sala> salas) {
+    public Cinema(int id, String Nome, ArrayList<Sala> salas) {
         this.id = id;
         this.Nome = Nome;
         this.salas = salas;
@@ -33,13 +32,12 @@ public class Cinema {
         return Nome;
     }
 
-    public List<Sala> getSalas() {
+    public ArrayList<Sala> getSalas() {
         return salas;
     }
 
-    public void setSalas(List<Sala> salas) {
+    public void setSalas(ArrayList<Sala> salas) {
         this.salas = salas;
     }
-    
-    
+
 }

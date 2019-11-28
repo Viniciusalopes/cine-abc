@@ -5,7 +5,7 @@
  */
 package model;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,9 +15,9 @@ public class Sala {
 
     private int id;
     private String nome;
-    private List<Sessao> sessoes;
+    private ArrayList<Sessao> sessoes;
 
-    public Sala(int id, String nome, List<Sessao> sessoes) {
+    public Sala(int id, String nome, ArrayList<Sessao> sessoes) {
         this.id = id;
         this.nome = nome;
         this.sessoes = sessoes;
@@ -31,7 +31,7 @@ public class Sala {
         return nome;
     }
 
-    public List<Sessao> getSessoes() {
+    public ArrayList<Sessao> getSessoes() {
         return sessoes;
     }
 }

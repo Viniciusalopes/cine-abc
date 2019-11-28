@@ -20,45 +20,36 @@ public class MenuPrincipal {
 
     public void menuPrincipal(Bll bll) {
         this.bll = bll;
-        app = new APP(bll);
+        this.app = new APP(bll);
         Scanner input = new Scanner(System.in);
         String opcao;
-        boolean sair;
+
         do {
+            app.imprime("Menu Principal\n"
+                    + "\n 1. Registrar venda de Ingresso "
+                    + "\n 2. Relatório"
+                    + "\n 3. Reimprimir Ingresso\n"
+                    + "\n 0. Sair\n\n"
+                    + "> ");
 
-            do {
-                app.imprime("Menu Principal\n"
-                        + "\n 1. Registrar venda de Ingresso "
-                        + "\n 2. Relatório"
-                        + "\n 3. Reimprimir Ingresso\n"
-                        + "\n 0. Sair\n\n"
-                        + "> ");
-
-                sair = ValidaInput.int_no_intervalo(opcao = input.nextLine(), 0, 3);
-                if (sair == false) {
-                    System.out.printf("\n");
-                    app.imprime("Opcao Inválida!\n");
-                    System.out.printf("\n");
-
+            if (!ValidaInput.int_no_intervalo(opcao = input.nextLine(), 0, 3)) {
+                app.imprime("\nOpcao Inválida!\n\n");
+                opcao = "-1";
+            } else {
+                switch (Integer.parseInt(opcao)) {
+                    case 1:
+                        opcao = Integer.toString(
+                                new RegistrarVenda().MenuRegistrarVenda(bll, app));
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        break;
                 }
-            } while (!sair);
-
-            switch (Integer.parseInt(opcao)) {
-                case 0:
-                    break;
-                case 1:
-                    new RegistrarVenda().MenuRegistrarVenda(bll,app);
-                    break;
-                case 2:
-                    break;
-                case 3:
-
-                    break;
-                default:
-
             }
 
-        } while (Integer.parseInt(opcao) != 0);
-
+        } while (Integer.parseInt(opcao) < 0);
     }
 }

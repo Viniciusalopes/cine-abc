@@ -7,7 +7,6 @@ package bll;
 
 import dao.Dao;
 import java.util.ArrayList;
-import java.util.List;
 import model.Cinema;
 import model.Entrada;
 import model.Filme;
@@ -36,43 +35,55 @@ public class Bll {
         return this.dados.getEntradas();
     }
 
-    public Object[] getListaDeFilmes(int id_sessao) {
-        ArrayList<Integer> ids = new ArrayList();
-        ArrayList<String> titulos = new ArrayList();
-
-        for (Sessao s : getSessao(id_sessao)) {
-            ids.add(s.getFilme().getId());
-            titulos.add(s.getFilme().getTitulo());
-
-        }
-
-        return new Object[]{ids, titulos, id_sessao};
+    public ArrayList<Sala> getSalas() {
+        return this.dados.getSalas();
     }
 
-    public ArrayList<Sessao> getSessao(int id_sessao) {
-        ArrayList<Sala> salas = dados.getSalas();
-        ArrayList<Sessao> ss = new ArrayList<>();
-        for (int i = 0; i < salas.size(); i++) {
-            List<Sessao> sessoes = salas.get(i).getSessoes();
-            for (int j = 0; j < sessoes.size(); j++) {
-                if (sessoes.get(j).getId() == id_sessao) {
-                    ss.add(sessoes.get(j));
+    public ArrayList<Filme> getListaDeFilmes() {
+        return this.dados.getFilmes();
+    }
 
+    public ArrayList<Sessao> getSessoes(int id_sessao) {
+        ArrayList<Sessao> sessoes = new ArrayList();
+        for (Sala sl : this.dados.getCinema().getSalas()) {
+            for (Sessao ss : sl.getSessoes()) {
+                sessoes.add(ss);
+            }
+        }
+        return sessoes;
+    }
+
+    public String[] getPeriodos() {
+        return this.dados.getPeriodos();
+    }
+
+    public int getIdPoltrona(int id_filme, int id_sessao, int id_sala, char fileira, int numero) {
+        for (Sala sl : dados.getSalas()) {
+            if (sl.getId() == id_sala) {
+                for (Sessao ss : sl.getSessoes()) {
+                    if (ss.getId() == id_sessao && ss.getFilme().getId() == id_filme) {
+                        for (Poltrona p : ss.getPoltronas()) {
+                            if (p.getFileira() == fileira && p.getNumero() == numero) {
+                                return p.getId();
+                            }
+                        }
+                    }
                 }
             }
         }
-        return ss;
+        return 0;
     }
 
-    public Object[] getPeriodos() {
-        ArrayList<Integer> ids = new ArrayList();
-        ArrayList<String> periodos = new ArrayList();
-
-        for (Sessao s : dados.getSessao()) {
-            ids.add(s.getId());
-            periodos.add(s.getPeriodo());
+    public boolean poltronaLivre(int id_filme, int id_sessao, int id_sala, int id_poltrona) {
+        for (Entrada e : dados.getEntradas()) {
+            if (e.getFilme_id() == id_filme
+                    && e.getSessao_id() == id_sessao
+                    && e.getSala_id() == id_sala
+                    && e.getPoltrona_id() == id_poltrona) {
+                return false;
+            }
         }
-        return new Object[]{ids, periodos};
+        return true;
     }
 
     public Object[] getPoltrona(Bll bll, int id_filme, int id_sessao) {
@@ -100,7 +111,7 @@ public class Bll {
             entradasIdPolrona.add(e.getPoltrona_id());
             entradasIdFilme.add(e.getFilme_id());
         }
-        return new Object[]{ids, letras, numeros,id_filme};
+        return new Object[]{ids, letras, numeros, id_filme};
     }
 
     public String imprimeTituloFilme(int id_filme) {
@@ -113,13 +124,14 @@ public class Bll {
     }
 
     public String imprimePeriodo(int id_sessao) {
-        for (Sessao ss : dados.getSessao()) {
-            if (ss.getId() == id_sessao) {
-                return ss.getPeriodo();
 
-            }
-
-        }
+//        for (Sessao ss : dados.ge) {
+//            if (ss.getId() == id_sessao) {
+//                return ss.getPeriodo();
+//
+//            }
+//
+//        }
         return null;
     }
 
@@ -171,69 +183,32 @@ public class Bll {
     }
 
     public int getSessaoId(int id_filme) {
-        int id_sessao = 0;
-        for (Sessao s : dados.getSessao()) {
-
-            if (s.getFilme().getId() == id_filme) {
-
-                id_sessao = s.getId();
-                return id_sessao;
-            }
-        }
-        return 0;
-    }
-
-    public int getPoltronaId(char fileira, int numero) {
-        for (Poltrona p : dados.getPoltronas()) {
-            if (p.getFileira() == fileira) {
-                if (p.getNumero() == numero) {
-                    return p.getId();
-                }
-            }
-        }
-
+//        int id_sessao = 0;
+//        for (Sessao s : dados.getSessao()) {
+//
+//            if (s.getFilme().getId() == id_filme) {
+//
+//                id_sessao = s.getId();
+//                return id_sessao;
+//            }
+//        }
         return 0;
     }
 
     public int getSalaId(int id_filme, int id_sessao) {
-        int[] vetorIds = new int[dados.getFilmes().size()];
-
-        Cinema c = dados.getCinema();
-        int i = 0;
-        for (Sala sl : c.getSalas()) {
+        for (Sala sl : dados.getSalas()) {
             for (Sessao ss : sl.getSessoes()) {
-                if (ss.getFilme().getId() == id_filme) {
+                if (ss.getId() == id_sessao
+                        && ss.getFilme().getId() == id_filme) {
                     return sl.getId();
                 }
             }
-
         }
-
-        int teste = 0;
-
         return 0;
     }
 
     public int getEntradaId() {
-
         return dados.getEntrada_id();
-    }
-
-    public ArrayList<Integer> getEntradaPoltronId(int id_filme) {
-        ArrayList<Integer> ids_poltrona = new ArrayList<>();
-        for (Entrada ent : dados.getEntradas()) {
-            if (ent.getFilme_id() == id_filme) {
-                ids_poltrona.add(ent.getPoltrona_id());
-
-            }
-
-        }
-        return ids_poltrona;
-    }
-
-    public void incrementaEntrada() {
-        dados.incrementaEntrada();
-
     }
 
     public char[] getLetras() {

@@ -53,12 +53,6 @@ public class Dao {
         this.filmes.add(new Filme(1, "Malévola - Dona do Mal"));
         this.filmes.add(new Filme(2, "Os Parças"));
         this.filmes.add(new Filme(3, "As Panteras"));
-        this.filmes.add(new Filme(4, "Malévola - Dona do Mal"));
-        this.filmes.add(new Filme(5, "Os Parças"));
-        this.filmes.add(new Filme(6, "As Panteras"));
-        this.filmes.add(new Filme(7, "Malévola - Dona do Mal"));
-        this.filmes.add(new Filme(8, "Os Parças"));
-        this.filmes.add(new Filme(9, "As Panteras"));
 
         poltronas = new ArrayList<>();
         char letra = 'A';
@@ -74,23 +68,21 @@ public class Dao {
 
         salas = new ArrayList();
         sessoes = new ArrayList();
-        this.sessoes.add(new Sessao(1, "Manhã", poltronas, filmes.get(0)));//1
-        this.sessoes.add(new Sessao(2, "Tarde", poltronas, filmes.get(3)));//4
-        this.sessoes.add(new Sessao(3, "Noite", poltronas, filmes.get(6)));//7
+        this.sessoes.add(new Sessao(1, "Manhã", poltronas, filmes.get(0)));
+        this.sessoes.add(new Sessao(2, "Tarde", poltronas, filmes.get(1)));
+        this.sessoes.add(new Sessao(3, "Noite", poltronas, filmes.get(2)));
         this.salas.add(new Sala(1, "A1", sessoes));
 
-        
         sessoes = new ArrayList();
-        this.sessoes.add(new Sessao(1, "Manhã", poltronas, filmes.get(1)));//2
-        this.sessoes.add(new Sessao(2, "Tarde", poltronas, filmes.get(4)));//5
-        this.sessoes.add(new Sessao(3, "Noite", poltronas, filmes.get(7)));//8
+        this.sessoes.add(new Sessao(1, "Manhã", poltronas, filmes.get(0)));
+        this.sessoes.add(new Sessao(2, "Tarde", poltronas, filmes.get(1)));
+        this.sessoes.add(new Sessao(3, "Noite", poltronas, filmes.get(2)));
         this.salas.add(new Sala(2, "B1", sessoes));
 
-        
         sessoes = new ArrayList();
-        this.sessoes.add(new Sessao(1, "Manhã", poltronas, filmes.get(2)));//3
-        this.sessoes.add(new Sessao(2, "Tarde", poltronas, filmes.get(5)));//6
-        this.sessoes.add(new Sessao(3, "Noite", poltronas, filmes.get(8)));//9
+        this.sessoes.add(new Sessao(1, "Manhã", poltronas, filmes.get(0)));
+        this.sessoes.add(new Sessao(2, "Tarde", poltronas, filmes.get(1)));
+        this.sessoes.add(new Sessao(3, "Noite", poltronas, filmes.get(2)));
         this.salas.add(new Sala(3, "C1", sessoes));
 
         cinema.setSalas(salas);
@@ -110,21 +102,17 @@ public class Dao {
         return filmes;
     }
 
-    public ArrayList<Sessao> getSessao() {
-
-        return sessoes;
-    }
-
     public ArrayList<Sala> getSalas() {
 
-        return salas;
-    }
-
-    public ArrayList<Poltrona> getPoltronas() {
-        return poltronas;
+        return cinema.getSalas();
     }
 
     public ArrayList<Entrada> getEntradas() {
         return entradas;
     }
+
+    public String[] getPeriodos() {
+        return periodos;
+    }
+    
 }
