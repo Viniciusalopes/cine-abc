@@ -32,6 +32,10 @@ public class RegistrarVenda {
         boolean tipoEntrada;
         int validaNumeroEntrada;
         id_sessao = LoopSessao();
+        
+      for(Cinema c : bll.)
+            
+        }
         if (id_sessao == 0) {
             return 0;
         } else {
