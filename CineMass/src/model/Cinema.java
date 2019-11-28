@@ -16,7 +16,13 @@ public class Cinema {
 
     private int id;
     private String nome;
-    private List<Sala> salas = new ArrayList<Sala>();
+    private List<Sala> salas ;
+
+    public Cinema(int id, String nome, List<Sala> salas) {
+        this.id = id;
+        this.nome = nome;
+        this.salas = salas;
+    }
 
     public int getId() {
         return id;
@@ -28,5 +34,9 @@ public class Cinema {
 
     public List<Sala> getSalas() {
         return salas;
+    }
+    
+    public void setSalas(List<Sala> salas){
+        this.salas = salas;
     }
 }

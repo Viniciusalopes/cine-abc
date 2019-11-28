@@ -10,13 +10,29 @@ package model;
  * @author vovostudio
  */
 public class Sessao {
+<<<<<<< HEAD
 
     private String periodo;
     private Poltrona[][] poltrona = new Poltrona[10][10];
     private Filme filme = new Filme();
+=======
+>>>>>>> master
 
+    // Atributos
     private int id;
+    private String periodo;
+    private Poltrona[][] poltronas;
+    private Filme filme;
 
+    // Construtor
+    public Sessao(int id, String periodo, Poltrona[][] poltronas, Filme filme) {
+        this.id = id;
+        this.periodo = periodo;
+        this.poltronas = poltronas;
+        this.filme = filme;
+    }
+
+    // Get
     public int getId() {
         return id;
     }
@@ -25,12 +41,16 @@ public class Sessao {
         return periodo;
     }
 
-    public Poltrona[][] getPoltrona() {
-        return poltrona;
+    public Poltrona[][] getPoltronas() {
+        return poltronas;
     }
 
     public Filme getFilme() {
         return filme;
     }
+<<<<<<< HEAD
 
 }
+=======
+}
+>>>>>>> master
