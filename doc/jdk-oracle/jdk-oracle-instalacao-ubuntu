@@ -1,5 +1,7 @@
 # FONTE: https://www.javahelps.com/2015/03/install-oracle-jdk-in-ubuntu.html
 
+## Download: https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
 # Comandos no terminal:
 sudo mkdir /usr/lib/jvm
 cd /usr/lib/jvm
